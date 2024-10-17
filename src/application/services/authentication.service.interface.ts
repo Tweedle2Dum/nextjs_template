@@ -1,12 +1,25 @@
-import type { Session } from "@/src/entities/models/session";
+export interface ICredentialAuthService {
+  signIn(email: string, password: string): Promise<void>;
+  createAccount(email: string, password: string): Promise<void>;
+  resetPassword(email: string): Promise<void>;
+  getUserProfile(token: string): Promise<void>;
+}
 
-export interface IAuthenticationService {
-    signInWithEmail(email: string, password: string): Promise<void>;
-    signInWithProvider(provider: AuthProvider): Promise<void>;
-    signOut(): Promise<void>;
-    getSession(): Promise<Session | null>;
-    resetPassword(email: string): Promise<void>;
-  }
-
-type AuthProvider = 'google' | 'github' | 'facebook' | 'twitter';
-  
+//Follow PKCE Flow
+export interface IOAuthService {
+  generateState(): string;
+  codeVerifier(): string;
+  validateCode(
+    state: string,
+    codeVerifier: string
+  ): Promise<{
+    accessToken: string;
+    refreshToken: string | null;
+    idToken: string;
+    accessTokenExpiresAt: Date;
+  }>;
+  createAuthorizationUrl(state: string, codeVerifier: string): Promise<URL>;
+  refreshAccessToken(
+    accessToken: string
+  ): Promise<{ accessToken: string; accessTokenExpiresAt: Date }>;
+}
