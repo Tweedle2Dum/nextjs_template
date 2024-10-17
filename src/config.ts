@@ -9,6 +9,7 @@ export const env = createEnv({
     DATABASE_URL: z.string(), // Add other server-only variables here
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_CLIENT_SECRET: z.string(),
+    APP_URL:z.string()
   },
   // Define client-side environment variables (if needed)
   client: {
@@ -19,6 +20,6 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-    NEXT_PUBLIC_API_URL:process.env.NEXT_PUBLIC_API_URL
-  },
+    NEXT_PUBLIC_API_URL:process.env.NEXT_PUBLIC_API_URL,
+    APP_URL: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : process.env.APP_URL,  },
 });
