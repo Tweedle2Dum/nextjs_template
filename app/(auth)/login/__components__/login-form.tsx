@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Form,
   FormControl,
@@ -7,18 +7,18 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { emailAndPasswordSchema } from "@/src/schema/email-password.schema";
-import type { EmailAndPassword } from "@/src/schema/email-password.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { FcGoogle } from "react-icons/fc";
-import Link from "next/link";
-import { loginWithEmailAndPassword } from "./actions";
-import {  useToast } from "@/components/hooks/use-toast";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { emailAndPasswordSchema } from '@/src/schema/email-password.schema';
+import type { EmailAndPassword } from '@/src/schema/email-password.schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { FcGoogle } from 'react-icons/fc';
+import Link from 'next/link';
+import { loginWithEmailAndPassword } from './actions';
+import { useToast } from '@/components/hooks/use-toast';
 
 interface LoginFormProps {}
 export const LoginForm = ({}: LoginFormProps) => {
@@ -30,9 +30,9 @@ export const LoginForm = ({}: LoginFormProps) => {
     const res = await loginWithEmailAndPassword(data);
     if (res.error) {
       toast({
-        title: "Error",
+        title: 'Error',
         description: res.error,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
@@ -79,7 +79,7 @@ export const LoginForm = ({}: LoginFormProps) => {
         </Button>
         <Separator className="w-1/2 mx-auto" />
         <Button asChild>
-          <Link href={"/login/google"}>
+          <Link href={'/login/google'}>
             <FcGoogle />
             Continue with Google
           </Link>

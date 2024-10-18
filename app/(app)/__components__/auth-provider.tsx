@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import type { UserSession } from "@/src/entities/models/session";
+'use client';
+import React from 'react';
+import type { UserSession } from '@/src/entities/models/session';
 
 const AuthContext = React.createContext<UserSession | undefined>(undefined);
 
@@ -25,7 +25,7 @@ export const useAuth = () => {
 
   if (!context)
     throw new Error(
-      "AuthContext must only be used inside AuthContext in a client component"
+      'AuthContext must only be used inside AuthContext in a client component'
     );
 
   return context;

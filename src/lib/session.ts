@@ -1,12 +1,12 @@
-import { cookies } from "next/headers";
-import type { UserSession } from "../entities/models/session";
-import type { User } from "../entities/models/user";
+import { cookies } from 'next/headers';
+import type { UserSession } from '../entities/models/session';
+import type { User } from '../entities/models/user';
 
 export const getUserSession = (): UserSession | null => {
   const cookieStore = cookies();
 
-  const accessToken = cookieStore.get("accessToken")?.value || null;
-  const userCookie = cookieStore.get("user")?.value || null;
+  const accessToken = cookieStore.get('accessToken')?.value || null;
+  const userCookie = cookieStore.get('user')?.value || null;
 
   if (userCookie && accessToken) {
     try {
@@ -16,7 +16,7 @@ export const getUserSession = (): UserSession | null => {
         ...user,
       };
     } catch (error) {
-      console.error("Error parsing user cookie:", error);
+      console.error('Error parsing user cookie:', error);
     }
   }
   return null;

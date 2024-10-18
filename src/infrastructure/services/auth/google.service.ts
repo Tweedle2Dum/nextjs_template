@@ -1,8 +1,8 @@
-"server-only";
-import type { IOAuthService } from "@/src/application/services/authentication.service.interface";
-import { OAuthError } from "@/src/entities/errors/auth";
-import { Google, generateState, generateCodeVerifier } from "arctic";
-import { env } from "@/src/config";
+'server-only';
+import type { IOAuthService } from '@/src/application/services/authentication.service.interface';
+import { OAuthError } from '@/src/entities/errors/auth';
+import { Google, generateState, generateCodeVerifier } from 'arctic';
+import { env } from '@/src/config';
 
 export class GoogleAuthService implements IOAuthService {
   private client: Google;
@@ -31,10 +31,10 @@ export class GoogleAuthService implements IOAuthService {
       state,
       codeVerifier,
       {
-        scopes: ["openid", "profile", "email"],
+        scopes: ['openid', 'profile', 'email'],
       }
     );
-    url.searchParams.set("access_type", "offline");
+    url.searchParams.set('access_type', 'offline');
     return url;
   }
 
@@ -69,9 +69,9 @@ export class GoogleAuthService implements IOAuthService {
         accessTokenExpiresAt: accessTokenExpiresAt,
       };
     } catch (err) {
-      console.error("Error refreshing access token:", err);
+      console.error('Error refreshing access token:', err);
       throw new OAuthError(
-        "Unable to refresh access Token. Please login again"
+        'Unable to refresh access Token. Please login again'
       );
     }
   }
