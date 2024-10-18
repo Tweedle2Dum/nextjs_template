@@ -1,5 +1,7 @@
+import type { User } from "@/src/entities/models/user";
+
 export interface ICredentialAuthService {
-  signIn(email: string, password: string): Promise<void>;
+  signIn(email: string, password: string): Promise<User>;
   createAccount(email: string, password: string): Promise<void>;
   resetPassword(email: string): Promise<void>;
   getUserProfile(token: string): Promise<void>;
